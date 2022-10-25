@@ -34,12 +34,11 @@ block content
         .col-xs-12.col-sm-6
             .panel.panel-primary 
               .panel-heading 
-                h2.panel-title Konum Bilgisi 
-              .panel-body 
-                -var enlem = 29.78
-                -var boylam = 30.54
-                img.img-responsive.img-rounded(src='https://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+
-                '&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
+                  h2.panel-title Konum Bilgisi
+              .panel-body
+                  -var enlem=mekanDetay.kordinatlar.enlem
+                  -var boylam=mekanDetay.kordinatlar.boylam
+                  img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom&12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
   
                 
                 
