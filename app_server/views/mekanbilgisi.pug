@@ -35,9 +35,9 @@ block content
                             .panel-heading 
                                 h2.panel-title Konum Bilgisi 
                             .panel-body 
-                                -var enlem=37.78454105816688
-                                -var boylam=30.542432390534117
-                                img.img-responsive.img-rounded(src='https://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
+                                -var enlem = mekanDetay.koordinatlar.enlem
+                                -var boylam = mekanDetay.koordinatlar.boylam
+                                img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center=' + enlem + ',' + boylam + '&zoom=12&size=600x400&markers=' + enlem + ',' + boylam + '&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
 
         .row 
             .col-xs-12 
@@ -54,7 +54,7 @@ block content
                                         +puanOlustur(yorum.puan) 
                                         | &nbsp;
                                         span.review-author=yorum.yorumYapan  
-                                        small.reviewTimestamp &nbsp; #{yorum.tarih}
+                                        small.reviewTimestamp &nbsp; #{yorum.tarih} 
                                     .col-xs-12 
                                         p= yorum.yorumMetni  
                                         | &nbsp;
