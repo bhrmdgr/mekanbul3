@@ -1,48 +1,45 @@
 extends layout
 include fonksiyonlar/yildiz
 block content
-  .row.page-header
-    .col-lg-12 
-      hi #{mekanDetay.ad}
-  
-  .row
-    .col-xs-12.col-md-12
-      .row 
-        .col-xs-12.col-sm-6 
-          p.rating 
-            +puanOlustur(mekanDetay.puan)    
-          p #{mekanDetay.adres}
-          .panel.panel-primary
-            .panel-heading
-              h2.panel-title Çalışma Saatleri
-            .panel-body
-              p 
-                | Pazartesi-Cuma: 11.00-02.00
-              p
-                | Cumartesi-Pazar: 12.00-01.00
-            
-          .panel.panel-primary
-            .panel-heading
-              h2.panel-title Neler Var?
-            .panel-body 
-              span.label.label-warning Dünyaca Ünlü Kahveler 
-              | &nbsp;
-              span.label.label-warning Tatlı 
-              | &nbsp;
-              
 
-        .col-xs-12.col-sm-6
-            .panel.panel-primary 
-              .panel-heading 
-                  h2.panel-title Konum Bilgisi
-              .panel-body
-                  -var enlem=mekanDetay.kordinatlar.enlem
-                  -var boylam=mekanDetay.kordinatlar.boylam
-                  img.img-responsive.img-rounded(src='http://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom&12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
-  
-                
-                
-  .row 
+    .row.page-header   
+        .col-lg-12 
+            h1= mekanBaslik 
+    .row
+        .col-xs-12.col-md-12 
+            .row 
+                .col-xs-12.col-sm-6
+                    p.rating 
+                        +puanOlustur(mekanDetay.puan)
+                    p= mekanDetay.adres  
+                    .panel.panel-primary 
+                        .panel-heading 
+                            h2.panel-tittle Açılış Saatleri 
+                        .panel-body 
+                        each saat in mekanDetay.saatler
+                            p 
+                              | #{saat.gunler} : &nbsp;
+                              if (saat.kapali)
+                                | Kapalı
+                              else 
+                                | #{saat.acilis}-#{saat.kapanis}
+                    .panel.panel-primary   
+                        .panel-heading 
+                            h2.panel-title Neler Var?
+                        .panel-body 
+                            each imkan in mekanDetay.imkanlar
+                                span.label.label-warning= imkan 
+                                | &nbsp;
+                    .col-xs-12.col-sm-6 
+                        .panel.panel-primary 
+                            .panel-heading 
+                                h2.panel-title Konum Bilgisi 
+                            .panel-body 
+                                -var enlem=37.78454105816688
+                                -var boylam=30.542432390534117
+                                img.img-responsive.img-rounded(src='https://maps.googleapis.com/maps/api/staticmap?center='+enlem+','+boylam+'&zoom=12&size=600x400&markers='+enlem+','+boylam+'&key=AIzaSyCmmKygTpBzHGOZEciJpAdxC9v_tWHagnE')
+
+        .row 
             .col-xs-12 
                 .panel.panel-primary 
                     .panel-heading 
